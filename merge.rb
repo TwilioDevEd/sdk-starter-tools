@@ -49,14 +49,20 @@ php = Repo.new(
     'webroot'
 )
 
+csharp = Repo.new(
+    'git@github.com:twiliodeved/sdk-starter-csharp.git',
+    'csharp_repo',
+    'src/sdkstarter/public'
+)
+
 front_end = Repo.new(
     'git@github.com:twiliodeved/sdk-starter-node.git',
     'node_repo',
     'public'
 )
 
-server_repos = [ruby,php,java,python]
-all_repos = [front_end,ruby,php,java,python]
+server_repos = [ruby, php, java, python, csharp]
+all_repos = [front_end, ruby, php, java, python, csharp]
 
 tmp_dir = "tmp"
 
@@ -101,10 +107,12 @@ search_replace_in_file_path("'/send-notification'","'/send-notification.php'",ph
 
 # create commits
 server_repos.each do |repo|
+    puts "creating git commit for #{repo.dir_name}"
     system "cd #{tmp_dir}/#{repo.dir_name} && git add . && git commit -m '#{commit_message}'"
 end
 
 # push to github
 server_repos.each do |repo|
+    puts "creating git commit for #{repo.dir_name}"
     system "cd #{tmp_dir}/#{repo.dir_name} && git push origin #{branch_name}"
 end
