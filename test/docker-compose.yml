@@ -1,0 +1,15 @@
+version: "2"
+services:
+  sdk-integration-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - sdk-starter-node
+  sdk-starter-node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "3000:3000"
+    
