@@ -11,9 +11,9 @@ RUN rm node.zip
 
 WORKDIR /sdk-starter-kits/node/sdk-starter-node-master
 RUN ls -l
+RUN cp .env.example .env
 
 EXPOSE 3000
 RUN npm install
 
-COPY .env .
 CMD ["npm", "start"]
