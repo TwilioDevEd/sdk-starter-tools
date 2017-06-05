@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 
-frisby.baseUrl('http://sdk-starter-node:3000')
+frisby.baseUrl('http://sdk-starter-java:4567')
 
 describe('SDK Starter Kit Test Suite', function () {
   it('should retrieve a token', function (done) {
@@ -29,22 +29,22 @@ describe('SDK Starter Kit Test Suite', function () {
       .done(done)
   })
   it('should retrieve Sync page', function (done) {
-    frisby.get('/sync')
+    frisby.get('/sync/')
       .expect('status', 200)
       .done(done)
   })
   it('should retrieve Chat page', function (done) {
-    frisby.get('/chat')
+    frisby.get('/chat/')
       .expect('status', 200)
       .done(done)
   })
   it('should retrieve Video page', function (done) {
-    frisby.get('/video')
+    frisby.get('/video/')
       .expect('status', 200)
       .done(done)
   })
   it('should retrieve Notify page', function (done) {
-    frisby.get('/notify')
+    frisby.get('/notify/')
       .expect('status', 200)
       .done(done)
   })

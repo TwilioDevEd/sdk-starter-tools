@@ -6,6 +6,9 @@ services:
       dockerfile: Dockerfile
     links:
       - sdk-starter-node
+      - sdk-starter-python
+      - sdk-starter-ruby
+      - sdk-starter-java
   sdk-starter-node:
     build:
       context: .
@@ -14,4 +17,27 @@ services:
       - "3000:3000"
     env_file:
       - .env
-    
+  sdk-starter-python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+  sdk-starter-ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile.ruby
+    ports:
+      - "4001:4567"
+    env_file:
+      - .env        
+  sdk-starter-java:
+    build:
+      context: .
+      dockerfile: Dockerfile.java
+    ports:
+      - "4567:4567"
+    env_file:
+      - .env        
