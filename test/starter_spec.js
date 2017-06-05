@@ -1,6 +1,6 @@
 const frisby = require('frisby');
 
-frisby.baseUrl('http://sdk-starter-java:4567')
+frisby.baseUrl('http://localhost:3001')
 
 describe('SDK Starter Kit Test Suite', function () {
   it('should retrieve a token', function (done) {

@@ -1,0 +1,20 @@
+from dkundel/sslaunch
+
+WORKDIR /sdk-starter-kits/csharp
+
+RUN echo "Downloading SDK Starter C#"
+RUN wget -O csharp.zip "https://github.com/TwilioDevEd/sdk-starter-csharp/archive/master.zip"
+
+RUN echo "Unzipping SDK Starter C#"
+RUN unzip csharp.zip
+RUN rm csharp.zip
+
+WORKDIR /sdk-starter-kits/csharp/sdk-starter-csharp-master/src/sdkstarter
+RUN ls -l
+RUN cp appsettings.example.json appsettings.json
+
+
+EXPOSE 3000
+RUN dotnet restore
+
+CMD ["dotnet","run"]

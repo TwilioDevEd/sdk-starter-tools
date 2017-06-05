@@ -9,6 +9,7 @@ services:
       - sdk-starter-python
       - sdk-starter-ruby
       - sdk-starter-java
+      - sdk-starter-csharp
   sdk-starter-node:
     build:
       context: .
@@ -39,5 +40,13 @@ services:
       dockerfile: Dockerfile.java
     ports:
       - "4567:4567"
+    env_file:
+      - .env    
+  sdk-starter-csharp:
+    build:
+      context: .
+      dockerfile: Dockerfile.csharp
+    ports:
+      - "3001:3000"
     env_file:
       - .env        
