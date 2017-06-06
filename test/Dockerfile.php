@@ -18,4 +18,7 @@ RUN cp webroot/config.php.example webroot/config.php
 EXPOSE 8000
 RUN composer install
 
+WORKDIR /sdk-starter-kits/php
+
+
 CMD ["php", "-S", "0.0.0.0:8000", "-t", "webroot"]
