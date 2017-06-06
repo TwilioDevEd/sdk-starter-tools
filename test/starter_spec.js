@@ -2,14 +2,20 @@ const frisby = require('frisby')
 const jwt_decode = require('jwt-decode')
 
 var baseUrl = process.env.baseUrl || 'http://localhost:3000'
+var testPHP = process.env.testPHP || false
+var routeSuffix = ''
+if (testPHP) {
+  routeSuffix = '.php'
+}
 
 console.log('Using Base url: ' + baseUrl)
+console.log('Using Route suffix: ' + routeSuffix)
 
 frisby.baseUrl(baseUrl)
 
 describe('SDK Starter Kit Test Suite', function () {
   it('should retrieve a token', function (done) {
-    frisby.get('/token')
+    frisby.get('/token' + routeSuffix)
       .then(function (response) {
         expect('status', 200)
         expect(response._body.identity).toBeDefined()
@@ -26,12 +32,12 @@ describe('SDK Starter Kit Test Suite', function () {
       .done(done)
   })
   it('should retrieve the configuration check', function (done) {
-    frisby.get('/config')
+    frisby.get('/config' + routeSuffix)
       .expect('status', 200)
       .done(done)
   })
   it('should be able to create a binding', function (done) {
-    frisby.post('/register', {
+    frisby.post('/register' + routeSuffix, {
       'identity':'testing',
       'BindingType':'gcm',
       'Address':'testing'
@@ -39,7 +45,7 @@ describe('SDK Starter Kit Test Suite', function () {
       .done(done)
   })
   it('should be able to send a notification', function (done) {
-    frisby.post('/send-notification', {
+    frisby.post('/send-notification' + routeSuffix, {
       'identity':'testing'
     }).expect('status', 200)
       .done(done)
