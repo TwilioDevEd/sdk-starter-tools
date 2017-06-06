@@ -9,7 +9,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "frisby": "^2.0.0-alpha.2",
-    "jasmine-node": "^1.14.5"
+    "frisby": "2.0.0-alpha.4",
+    "jasmine-node": "^1.14.5",
+    "jwt-decode": "^2.2.0"
   }
 }
