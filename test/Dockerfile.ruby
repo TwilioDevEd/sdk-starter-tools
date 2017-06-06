@@ -15,7 +15,7 @@ WORKDIR /sdk-starter-kits/ruby/sdk-starter-ruby-master
 RUN ls -l
 RUN cp .env.example .env
 
-EXPOSE 4567
+EXPOSE 4568
 RUN bundle install
 
-CMD ["bundle", "exec", "ruby", "app.rb", "-o", "0.0.0.0"]
+CMD ["bundle", "exec", "ruby", "app.rb", "-o", "0.0.0.0", "-p", "4568"]

@@ -1,8 +1,11 @@
 const frisby = require('frisby')
 const jwt_decode = require('jwt-decode')
 
+var baseUrl = process.env.baseUrl || 'http://localhost:3000'
 
-frisby.baseUrl('http://localhost:3000')
+console.log('Using Base url: ' + baseUrl)
+
+frisby.baseUrl(baseUrl)
 
 describe('SDK Starter Kit Test Suite', function () {
   it('should retrieve a token', function (done) {
@@ -13,8 +16,12 @@ describe('SDK Starter Kit Test Suite', function () {
         expect(response._body.token).toBeDefined()
         tokenJson = jwt_decode(response._body.token)
         console.log(tokenJson)
-        expect(tokenJson.grants).toBeDefined()
+        expect(tokenJson.grants.identity).toBeDefined()
         expect(tokenJson.grants.video).toBeDefined()
+        expect(tokenJson.grants.ip_messaging).toBeDefined()
+        expect(tokenJson.grants.ip_messaging.service_sid).toBeDefined()
+        expect(tokenJson.grants.data_sync).toBeDefined()
+        expect(tokenJson.grants.data_sync.service_sid).toBeDefined()
       })
       .done(done)
   })

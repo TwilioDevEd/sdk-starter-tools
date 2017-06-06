@@ -1,21 +1,43 @@
 version: "2"
 services:
-  sdk-integration-test:
+  sdk-integration-test-node:
     build:
       context: .
       dockerfile: Dockerfile
     links:
       - sdk-starter-node
+    environment:
+      - baseUrl=http://sdk-starter-node:3000
+  sdk-integration-test-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
       - sdk-starter-python
+    environment:
+      - baseUrl=http://sdk-starter-python:5000
+  sdk-integration-test-ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
       - sdk-starter-ruby
+    environment:
+      - baseUrl=http://sdk-starter-ruby:4568
+  sdk-integration-test-java:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
       - sdk-starter-java
-      - sdk-starter-csharp
+    environment:
+      - baseUrl=http://sdk-starter-java:4567
   sdk-starter-node:
     build:
       context: .
       dockerfile: Dockerfile.node
     ports:
-      - "3000:3000"
+      - "4001:3000"
     env_file:
       - .env
   sdk-starter-python:
@@ -23,7 +45,7 @@ services:
       context: .
       dockerfile: Dockerfile.python
     ports:
-      - "5000:5000"
+      - "4002:5000"
     env_file:
       - .env
   sdk-starter-ruby:
@@ -31,7 +53,7 @@ services:
       context: .
       dockerfile: Dockerfile.ruby
     ports:
-      - "4001:4567"
+      - "4003:4568"
     env_file:
       - .env        
   sdk-starter-java:
@@ -39,7 +61,7 @@ services:
       context: .
       dockerfile: Dockerfile.java
     ports:
-      - "4567:4567"
+      - "4004:4567"
     env_file:
       - .env    
   sdk-starter-csharp:
@@ -47,6 +69,14 @@ services:
       context: .
       dockerfile: Dockerfile.csharp
     ports:
-      - "3001:3000"
+      - "4005:3000"
     env_file:
       - .env        
+  sdk-starter-php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    ports:
+      - "4006:8000"
+    env_file:
+      - .env     
