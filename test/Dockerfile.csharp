@@ -11,7 +11,7 @@ RUN rm csharp.zip
 
 WORKDIR /sdk-starter-kits/csharp/sdk-starter-csharp-master/src/sdkstarter
 RUN ls -l
-RUN cp appsettings.example.json appsettings.json
+COPY appsettings.json .
 
 
 EXPOSE 3000

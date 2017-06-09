@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-node
     environment:
       - baseUrl=http://sdk-starter-node:3001
@@ -12,7 +12,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-python
     environment:
       - baseUrl=http://sdk-starter-python:5000
@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-ruby
     environment:
       - baseUrl=http://sdk-starter-ruby:4568
@@ -28,7 +28,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-java
     environment:
       - baseUrl=http://sdk-starter-java:4567
@@ -36,7 +36,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-csharp
     environment:
       - baseUrl=http://sdk-starter-csharp:3000
@@ -44,7 +44,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    links:
+    depends_on:
       - sdk-starter-php
     environment:
       - baseUrl=http://sdk-starter-php:8000

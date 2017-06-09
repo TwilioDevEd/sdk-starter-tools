@@ -1,5 +1,7 @@
 const frisby = require('frisby')
 const jwt_decode = require('jwt-decode')
+const waitOn = require('wait-on')
+
 
 var baseUrl = process.env.baseUrl || 'http://localhost:3000'
 var testPHP = process.env.testPHP || false
@@ -13,7 +15,19 @@ console.log('Using Route suffix: ' + routeSuffix)
 
 frisby.baseUrl(baseUrl)
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
 describe('SDK Starter Kit Test Suite', function () {
+
+  beforeAll(function(done) {
+    var opts = {
+      resources: [baseUrl]
+    }
+    waitOn(opts, function() {
+      done()
+    })
+  });
+
   it('should retrieve a token', function (done) {
     frisby.get('/token' + routeSuffix)
       .then(function (response) {
