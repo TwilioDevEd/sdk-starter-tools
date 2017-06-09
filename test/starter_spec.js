@@ -32,7 +32,11 @@ describe('SDK Starter Kit Test Suite', function () {
       .done(done)
   })
   it('should retrieve the configuration check', function (done) {
-    frisby.get('/config' + routeSuffix)
+    var route = '/config'
+    if (testPHP) {
+      route = route + '-check.php'
+    }
+    frisby.get(route)
       .expect('status', 200)
       .done(done)
   })
