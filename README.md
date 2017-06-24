@@ -36,15 +36,15 @@ These Dockerfiles pull down the latest from the master repo, so they are more us
 
 ## Docker Compose - Integration Testing of SDK Starter Kits using Docker Compose
 
-By combining the Docker files with an integration test for each SDK Starter Kit, we can run the integration tests against each of the SDK Starter Kits with one command
+Before running this integration test, you will need a .env file in the test directory, as well as an appsettings.json file (for C# configuration). Both of these will need all of the Twilio credentials and service ids for the integration tests to pass.
+
+By combining the Docker files with an integration test for each SDK Starter Kit, we can run the integration tests against each of the SDK Starter Kits with one command:
 
 `docker-compose up`
 
 As it stands now, all test output goes to the console, and it is a little jumbled in with the startup from each of the SDK Starter Kits. Future improvements could include some way to link this in with a test runner or report that shows an overall status for all builds. 
 
 If this can be tied to a test runner, then this piece could also be built into continuous integration testing.
-
-
 
 ## Merging Front End Web Changes for SDK Starter Kits for Web
 
