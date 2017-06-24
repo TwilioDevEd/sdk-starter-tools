@@ -19,13 +19,14 @@ If you would like to test the defaults (http://localhost:3000, not PHP), simply 
 The test script uses two environment variables to determine the base URL for testing, and whether or not the starter kit is written in PHP (different route suffix)
 
 baseUrl
+
 testPHP
 
 For instance, for Ruby, baseUrl might be http://localhost:4567
 
 More tests can be added to the starter_spec.js source code file, and those tests can also be refined.
 
-These are integration tests, and require Twilio credentials to run, which you would configure as you develop and test the SDK Starter Kits
+These are integration tests, and require Twilio credentials to run, which you would configure as you develop and test the SDK Starter Kits.
 
 ## Dockerfiles for SDK Starter Kits
 
