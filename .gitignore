@@ -1,1 +1,6 @@
 tmp
+
+.env
+appsettings.json
+
+test/node_modules

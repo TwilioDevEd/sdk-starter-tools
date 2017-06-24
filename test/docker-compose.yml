@@ -1,0 +1,101 @@
+version: "2"
+services:
+  sdk-integration-test-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-node
+    environment:
+      - baseUrl=http://sdk-starter-node:3001
+  sdk-integration-test-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-python
+    environment:
+      - baseUrl=http://sdk-starter-python:5000
+  sdk-integration-test-ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-ruby
+    environment:
+      - baseUrl=http://sdk-starter-ruby:4568
+  sdk-integration-test-java:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-java
+    environment:
+      - baseUrl=http://sdk-starter-java:4567
+  sdk-integration-test-csharp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-csharp
+    environment:
+      - baseUrl=http://sdk-starter-csharp:3000
+  sdk-integration-test-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sdk-starter-php
+    environment:
+      - baseUrl=http://sdk-starter-php:8000
+      - testPHP=true
+  sdk-starter-node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "4001:3001"
+    env_file:
+      - .env
+    environment:
+      - PORT=3001
+  sdk-starter-python:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "4002:5000"
+    env_file:
+      - .env
+  sdk-starter-ruby:
+    build:
+      context: .
+      dockerfile: Dockerfile.ruby
+    ports:
+      - "4003:4568"
+    env_file:
+      - .env        
+  sdk-starter-java:
+    build:
+      context: .
+      dockerfile: Dockerfile.java
+    ports:
+      - "4004:4567"
+    env_file:
+      - .env    
+  sdk-starter-csharp:
+    build:
+      context: .
+      dockerfile: Dockerfile.csharp
+    ports:
+      - "4005:3000"
+    env_file:
+      - .env        
+  sdk-starter-php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    ports:
+      - "4006:8000"
+    env_file:
+      - .env     

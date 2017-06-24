@@ -1,0 +1,19 @@
+from dkundel/sslaunch
+
+WORKDIR /sdk-starter-kits/node
+
+RUN echo "Downloading SDK Starter Node"
+RUN wget -O node.zip "https://github.com/TwilioDevEd/sdk-starter-node/archive/master.zip"
+
+RUN echo "Unzipping SDK Starter Node"
+RUN unzip node.zip
+RUN rm node.zip
+
+WORKDIR /sdk-starter-kits/node/sdk-starter-node-master
+RUN ls -l
+RUN cp .env.example .env
+
+EXPOSE 3000
+RUN npm install
+
+CMD ["npm", "start"]

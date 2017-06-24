@@ -1,0 +1,17 @@
+{
+  "name": "sdk-starter-test",
+  "version": "1.0.0",
+  "description": "Integration Test for SDK Server Starter Kits",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine starter_spec.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "frisby": "2.0.0-alpha.4",
+    "jasmine": "^2.4.0",
+    "jwt-decode": "^2.2.0",
+    "wait-on": "^2.0.2"
+  }
+}
