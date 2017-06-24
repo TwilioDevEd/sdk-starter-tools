@@ -1,5 +1,50 @@
 # Tools and Scripts for SDK Starter Kits
 
+## Integration Tests for SDK Starter Kits
+
+In the test directory, there is an integration test suite written in
+Javascript using the Frisby v2 test framework. You can use this test
+suite to test a running copy of any of the SDK Starter repos
+
+Steps to install (from the test subdirectory)
+
+`npm install`
+
+This will install the dev dependencies.
+
+If you would like to test the defaults (http://localhost:3000, not PHP), simply run
+
+`npm test`
+
+The test script uses two environment variables to determine the base URL for testing, and whether or not the starter kit is written in PHP (different route suffix)
+
+baseUrl
+testPHP
+
+For instance, for Ruby, baseUrl might be http://localhost:4567
+
+More tests can be added to the starter_spec.js source code file, and those tests can also be refined.
+
+These are integration tests, and require Twilio credentials to run, which you would configure as you develop and test the SDK Starter Kits
+
+## Dockerfiles for SDK Starter Kits
+
+Also under test are Dockerfiles for each of the SDK Starter Kits. These could be useful for testing environments that you don't have access to. Future plans for expansion would include different language versions (such as different versions of Node, Ruby, Python 2 vs Python 3). 
+
+These Dockerfiles pull down the latest from the master repo, so they are more useful for testing as part of an ongoing process to make sure that nothing is broken, than during active development to implement a feature.
+
+## Docker Compose - Integration Testing of SDK Starter Kits using Docker Compose
+
+By combining the Docker files with an integration test for each SDK Starter Kit, we can run the integration tests against each of the SDK Starter Kits with one command
+
+`docker-compose up`
+
+As it stands now, all test output goes to the console, and it is a little jumbled in with the startup from each of the SDK Starter Kits. Future improvements could include some way to link this in with a test runner or report that shows an overall status for all builds. 
+
+If this can be tied to a test runner, then this piece could also be built into continuous integration testing.
+
+
+
 ## Merging Front End Web Changes for SDK Starter Kits for Web
 
 All of the SDK Starter Kits for web share a common HTML/CSS/JS front end. This front end is static, and communicates with the back end server (written in [PHP](https://github.com/TwilioDevEd/sdk-starter-php)/[Python](https://github.com/TwilioDevEd/sdk-starter-python)/[Ruby](https://github.com/TwilioDevEd/sdk-starter-ruby)/[Node](https://github.com/TwilioDevEd/sdk-starter-node)/[Java](https://github.com/TwilioDevEd/sdk-starter-java)/[C#](https://github.com/TwilioDevEd/sdk-starter-csharp)) using AJAX.
