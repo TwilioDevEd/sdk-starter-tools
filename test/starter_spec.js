@@ -2,7 +2,6 @@ const frisby = require('frisby')
 const jwt_decode = require('jwt-decode')
 const waitOn = require('wait-on')
 
-
 var baseUrl = process.env.baseUrl || 'http://localhost:3000'
 var testPHP = process.env.testPHP || false
 var routeSuffix = ''
@@ -21,7 +20,7 @@ describe('SDK Starter Kit Test Suite', function () {
 
   beforeAll(function(done) {
     var opts = {
-      resources: [baseUrl]
+      resources: [baseUrl + '/']
     }
     waitOn(opts, function() {
       done()
@@ -33,6 +32,26 @@ describe('SDK Starter Kit Test Suite', function () {
       .then(function (response) {
         expect('status', 200)
         expect(response._body.identity).toBeDefined()
+        expect(response._body.token).toBeDefined()
+        tokenJson = jwt_decode(response._body.token)
+        console.log(tokenJson)
+        expect(tokenJson.grants.identity).toBeDefined()
+        expect(tokenJson.grants.video).toBeDefined()
+        expect(tokenJson.grants.ip_messaging).toBeDefined()
+        expect(tokenJson.grants.ip_messaging.service_sid).toBeDefined()
+        expect(tokenJson.grants.data_sync).toBeDefined()
+        expect(tokenJson.grants.data_sync.service_sid).toBeDefined()
+      })
+      .done(done)
+  })
+  it('should be able to post an identity for a token', function (done) {
+    formData = frisby.formData()
+    formData.append('identity','testing')
+    
+    frisby.post('/token' + routeSuffix, {'body': formData})
+      .then(function (response) {
+        expect('status', 200)
+        expect(response._body.identity).toEqual('testing')
         expect(response._body.token).toBeDefined()
         tokenJson = jwt_decode(response._body.token)
         console.log(tokenJson)
